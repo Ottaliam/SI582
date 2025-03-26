@@ -6,7 +6,7 @@ import FileDownloadIcon from "@mui/icons-material/FileDownload";
 import PageviewIcon from "@mui/icons-material/Pageview";
 import CodeIcon from "@mui/icons-material/Code";
 
-const TopBar = () => {
+const TopBar = ({ setElements }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -15,6 +15,17 @@ const TopBar = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  }
+
+  const handleAddElement = () => {
+    const newElement = {
+      name: "Example Element",
+      background: "#ff0000",
+      foreground: "#ffffff"
+    }
+
+    setElements((prevElements) => [...prevElements, newElement]);
+    handleClose();
   }
 
   return (
@@ -46,11 +57,11 @@ const TopBar = () => {
           horizontal: 'left'
         }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleAddElement}>
           <PageviewIcon sx={{ mr: 1 }} />
           Select Element in Page
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleAddElement}>
           <CodeIcon sx={{ mr: 1 }} />
           Select with CSS Selector
         </MenuItem>

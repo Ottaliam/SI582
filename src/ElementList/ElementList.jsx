@@ -1,16 +1,8 @@
-import {useState} from "react";
-
 import {List} from "@mui/material"
 
 import ElementListItem from "./ElementListItem.jsx";
 
-const ElementList = () => {
-  const [elements, setElements] = useState([
-    { name: "Element 1", background: "#ffcc00", foreground: "#333333" },
-    { name: "Element 2", background: "#00ccff", foreground: "#ffffff" },
-    { name: "Element 3", background: "#cc00ff", foreground: "#000000" },
-  ]);
-
+const ElementList = ({ elements }) => {
   return (
     <List>
       {elements.map((element, index) => (
