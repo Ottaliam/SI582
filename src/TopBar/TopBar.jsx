@@ -1,25 +1,26 @@
-import { Plus, Download } from "lucide-react";
-
-import styles from './TopBar.module.css';
+import {AppBar, Box, IconButton, Toolbar, Typography} from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
 
 const TopBar = () => {
   return (
-    <div className={styles.TopBar}>
-      <div className={styles.leftGroup}>
-        <button className={styles.button}>
-          <Plus size={20} />
-        </button>
-        <button className={styles.button}>
-          <Download size={20} />
-        </button>
-      </div>
+    <AppBar position="static" color="default" elevation={1}>
+      <Toolbar>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <IconButton color="primary">
+            <AddIcon />
+          </IconButton>
+          <IconButton color="primary">
+            <FileDownloadIcon />
+          </IconButton>
+        </Box>
 
-      <div className={styles.centerTitle}>
-        <h3 className={styles.title}>
+        <Box sx={{ flexGrow: 1 }} />
+        <Typography variant="h6" component="div">
           Color Changer
-        </h3>
-      </div>
-    </div>
+        </Typography>
+      </Toolbar>
+    </AppBar>
   )
 }
 
