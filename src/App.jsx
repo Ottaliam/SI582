@@ -12,8 +12,6 @@ const App = () => {
     { name: "Element 3", background: "#cc00ff", foreground: "#000000" },
   ]);
 
-  const [openAlert, setOpenAlert] = useState(false);
-
   const [openPopover, setOpenPopover] = useState(false);
 
   const anchorRef = useRef(null);
@@ -21,25 +19,6 @@ const App = () => {
   const elementListRef = useRef(null);
 
   const [selectedColor, setSelectedColor] = useState(null);
-
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'x') {
-        setOpenAlert(true);
-      }
-    }
-
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    }
-  }, []);
-
-  const handleSolve = () => {
-    setOpenAlert(false);
-    setOpenPopover(true);
-  }
 
   const handleApply = () => {
     setOpenPopover(false);
@@ -55,28 +34,6 @@ const App = () => {
     <Box sx={{ position: 'relative' }}>
       <TopBar setElements={setElements} />
       <ElementList elements={elements} ref={elementListRef} />
-
-      <Snackbar
-        open={openAlert}
-        autoHideDuration={6000}
-        onClose={() => setOpenAlert(false)}
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-      >
-        <Alert
-          severity="warning"
-          action={
-            <Button
-              color="inherit"
-              size="small"
-              onClick={handleSolve}
-            >
-              Solve
-            </Button>
-          }
-        >
-          Low Contrast
-        </Alert>
-      </Snackbar>
 
       <Popover
         open={openPopover}

@@ -33,7 +33,7 @@ const TopBar = ({ setElements }) => {
       <AppBar position="static" color="default" elevation={1}>
         <Toolbar>
           <Box sx={{ display: 'flex', gap: 1 }}>
-            <IconButton color="primary" onClick={handleClick}>
+            <IconButton color="primary" onClick={handleClick} id="add-menu">
               <AddIcon />
             </IconButton>
             <IconButton color="primary">
